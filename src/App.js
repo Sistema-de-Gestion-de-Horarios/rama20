@@ -22,6 +22,12 @@ function App() {
 				<Fragment>
 						 <Login  onClick={ctx.onClick}/>
                 	</Fragment>		
+					<Fragment>
+						 <LoginE  onClick={ctx.onClick}/>
+                	</Fragment>	
+					<Fragment>
+						 <LoginD  onClick={ctx.onClick}/>
+                	</Fragment>	
 			</Route>
 			</Switch>
 		</Router>
