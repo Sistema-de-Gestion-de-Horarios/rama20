@@ -1,23 +1,21 @@
 import React from "react"; 
-
 import "./index.css";
  
-
-const ListaDocente = (props) => {
+const ListaMateria = (props) => {
     return (
         <div>
-           {props.docentes.map((doce) => {
+           {props.materias.map((mat) => {
               return( 
-                <div key={doce.id}>
+                <div key={mat.id}>
                    <table>
                         <tbody>	
 	                     	<tr>
-                                <td> {doce.id} </td>
-                                <td> {doce.docenteName}</td>
-                                <td> {doce.cargaFloat}</td>
+                                <td> {mat.id} </td>
+                                <td> {mat.materiaName}</td>
+                                <td> {mat.sigla}</td>
                                 <td> 
                                     <i className="el-icon-edit"></i>
-                                    <a href="{#}" onClick={()=>this.doce.id}> {props.children}Editar</a>|
+                                    <a href="{#}" onClick={()=>this.mat.id}> {props.children}Editar</a>|
                                     <i className="el-icon-delete"></i> 
                                     <a href="{#}"onClick={props.onClick}> {props.children}Eliminar</a>|
                                     <a href="{#}" onClick={props.onClick}> {props.children}VerMateria</a>|
@@ -35,4 +33,4 @@ const ListaDocente = (props) => {
         </div>
      );
 }
-export default ListaDocente;
+export default ListaMateria;

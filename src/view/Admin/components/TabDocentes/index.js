@@ -1,36 +1,36 @@
 
 import React from 'react'
 import { useState } from 'react';
+import Buscador from '../Buscador';
 import Docente from './Docente';
-//import "./index.css";
-import Listadocente from './Listadocente';
-//import Index from "./Index"
+import "./index.css";
+import ListaDocente from './Listadocente';
 
-export default function TabDocentes(props) {
+
+function TabDocentes() {
    
-   const [docenteList, setDocenteList] = useState([]);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+   const [listDocente, setListDocentes] = useState([]);
+  //const [isUpdateIn, setIsUpdateIn] = useState(false);
+ 
 
-
-    //const [, setDir] = useState("");
-
-    
-    const newDocenteHandler =(docenteName, cargaFloat) => {
-        setDocenteList((prevDocenteList) => {
+  const newDocenteHandler =(docenteName, cargaFloat) => {
+        setListDocentes((prevListDocentes) => {
           return [
-             ...prevDocenteList, 
+             ...prevListDocentes, 
              {id: Math.trunc(Math.random() * 100), docenteName, cargaFloat} 
           ];
         });
      };
-
+  
+  
     
 
-    return (
-    
+    return (   
         <div className="content"> 
-          <Docente  oneNewDocente= {newDocenteHandler}/>
-          <Listadocente docentes={docenteList}/>
-   </div>
+          <Buscador/> <br/><br/>
+          <Docente  onNewDocente= {newDocenteHandler}/>
+          <ListaDocente docentes={listDocente}/>
+        </div>
     )
 }
+export default TabDocentes;

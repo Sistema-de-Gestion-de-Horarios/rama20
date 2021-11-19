@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-
 const Docente = (props) => {
+
     const [docenteName, setDocenteName] = useState("");
     const [cargaFloat, setCargaFloat] = useState("");
     const [showSummary, setShowSummary] = useState("");
 
+  
     const docenteNameHandler = (event) => {
         console.log(event.target.value);
         setDocenteName(event.target.value);
@@ -25,25 +26,32 @@ const Docente = (props) => {
     };
 
     return (
-        <div>
+      <div >{props.children}
              <form onSubmit={submitHandler}>
-                 <label> Nombre de ldocente </label>
-                 <input type="text" onChange={docenteNameHandler} value={docenteName} />
+                 <label> Nombre del docente </label>
+                 <input type="text" onChange={docenteNameHandler} value={docenteName} />&nbsp; &nbsp; &nbsp; &nbsp;   
                  <label> Carga Horaria </label>
-                 <input type="number" onChange={cargaFloatHandler} value={cargaFloat}/>
-                  <br/>
-                  <button type="button" onClick={props.onClick} >{props.children}Crear </button> <br/> <br/> 
+                 <input type="number" onChange={cargaFloatHandler} value={cargaFloat}/>&nbsp; &nbsp; &nbsp; 
+                  <button onClick={props.onClick}> {props.children}Crear </button> <br/><br/><br/>
                   
             </form>
-            {showSummary ? (
-        <p>la pelicula es  {docenteName}({cargaFloat})) </p>
-        ) : (
-            <></>
-        )}
+             <table>
+                <thead>
+                           <tr>
+                               <th>N°</th>
+                               <th>Nombre de Docente</th>
+			                   <th>Cargas Horarias</th>
+			                   <th> Operaciones </th>
+			        
+		                    </tr>
+	                    </thead>
+        
+                     </table>
+         
            
            
-            
-        </div>
+    </div>
+        
     )
-}
+};
 export default Docente;

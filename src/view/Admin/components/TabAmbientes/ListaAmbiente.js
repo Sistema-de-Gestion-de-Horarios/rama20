@@ -1,26 +1,25 @@
 import React from "react"; 
-
 import "./index.css";
  
-
-const ListaDocente = (props) => {
+const ListaAmbiente = (props) => {
     return (
         <div>
-           {props.docentes.map((doce) => {
+           {props.ambientes.map((amb) => {
               return( 
-                <div key={doce.id}>
+                <div key={amb.id}>
                    <table>
                         <tbody>	
 	                     	<tr>
-                                <td> {doce.id} </td>
-                                <td> {doce.docenteName}</td>
-                                <td> {doce.cargaFloat}</td>
+                                <td> {amb.id} </td>
+                                <td> {amb.ambienteName}</td>
+                                <td> {amb.piso}</td>
+                                <td> {amb.estado}</td>
                                 <td> 
                                     <i className="el-icon-edit"></i>
-                                    <a href="{#}" onClick={()=>this.doce.id}> {props.children}Editar</a>|
+                                    <a href="{#}" onClick={()=>this.amb.id}> {props.children}Editar</a>|
                                     <i className="el-icon-delete"></i> 
                                     <a href="{#}"onClick={props.onClick}> {props.children}Eliminar</a>|
-                                    <a href="{#}" onClick={props.onClick}> {props.children}VerMateria</a>|
+                                    <a href="{#}" onClick={props.onClick}> {props.children}VerAmbiente</a>|
 
                                 </td>    
                             
@@ -35,4 +34,4 @@ const ListaDocente = (props) => {
         </div>
      );
 }
-export default ListaDocente;
+export default ListaAmbiente;
