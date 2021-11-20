@@ -11,7 +11,7 @@ import Docente from './view/Docente';
 import Ambiente from "./view/Admin/components/TabAmbientes/Ambiente";
 import Materia from "./view/Admin/components/TabMaterias/Materia";
 import Admin from './view/Admin';
-import Estudiante from './view/Estudiante';
+import Estudiante from "./view/Admin/components/TabEstudiantes/Estudiante";
 import Pagina from './Pagina';
 import { useState } from 'react';
 import TabDocentes from './view/Admin/components/TabDocentes';
@@ -20,6 +20,8 @@ import TabAmbientes from "./view/Admin/components/TabAmbientes";
 import ListaAmbiente from "./view/Admin/components/TabAmbientes/ListaAmbiente";
 import TabMaterias from "./view/Admin/components/TabMaterias";
 import ListaMateria from "./view/Admin/components/TabMaterias/ListaMateria";
+import TabEstudiantes from "./view/Admin/components/TabEstudiantes";
+import ListaEstudiante from "./view/Admin/components/TabEstudiantes/ListaEstudiante";
 
 
 function App() {
@@ -30,8 +32,9 @@ function App() {
 	const [listAmbiente, setListAmbientes] = useState([]);
 	const [isMateriaIn, setMateriaIn] = useState(false);
 	const [listMateria, setListMaterias] = useState([]);
-  
- 
+	const [isEstudianteIn, setEstudianteIn] = useState(false);
+	const [listEstudiante, setListEstudiantes] = useState([]);
+
 	const newDocenteHandler =(docenteName, cargaFloat) => {
 			setListDocentes((prevListDocentes) => {
 			  return [
@@ -53,6 +56,14 @@ function App() {
 		  return [
 			  ...prevListMaterias, 
 			  {id: Math.trunc(Math.orden() * 100), materiaName, sigla} 
+		  ];
+		});
+    };
+	const newEstudianteHandler =(estudianteName, ru) => {
+		setListEstudiantes((prevListEstudiantes) => {
+		  return [
+			  ...prevListEstudiantes, 
+			  {id: Math.trunc(Math.orden() * 100), estudianteName, ru} 
 		  ];
 		});
     };
@@ -84,6 +95,16 @@ function App() {
 		console.log("Materia en---");
 		localStorage.setItem("isMateriaIn", 1);
 		setMateriaIn(true);	
+	};	
+
+	const storagedEstudianteInfo = localStorage.getItem("isEstudianteIn");
+	if (storagedEstudianteInfo === 1){
+		setEstudianteIn(true);
+	}
+	const EstudianteHandler = () => {
+		console.log("Estudiante en---");
+		localStorage.setItem("isEstudianteIn", 1);
+		setEstudianteIn(true);	
 	};	
 
 
