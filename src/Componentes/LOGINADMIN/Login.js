@@ -2,6 +2,7 @@ import React, {useState, useContext, useReducer} from "react";
 import Card from "../UI/Card";
 import {useHistory} from 'react-router-dom';
 import AuthContext from "../store/auth-context";
+import { Link } from "react-router-dom";
 
 
 const emailReducer = (state, action) => {
@@ -55,13 +56,15 @@ const Login = (props) => {
     return (
         <Card>
             <form onSubmit ={handlerSubmit}>
-                <label>Email</label>
-                <input  placeholder="ejemplo@gmail.com" onChange={emailChangeHandler} />
+                <label>User</label>
+                <input type="text "  onChange={emailChangeHandler} />
                 <label>Password</label> 
                 <input type="password" onChange={passwordChangeHandler} />
                 <button>Login</button>
             </form>
+           
         </Card>
+        
     );
 };
 
