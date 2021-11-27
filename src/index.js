@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-//import Login from './Componentes/LOGINADMIN/Login';
-//import reportWebVitals from './reportWebVitals';
+import { AuthContextProvider } from './Componentes/store/auth-context';
 
 ReactDOM.render(
-  <React.StrictMode>
-      <App/>
-  </React.StrictMode>,
+  <AuthContextProvider>
+    <App/>
+  </AuthContextProvider>,
   document.getElementById('root')
 );
 

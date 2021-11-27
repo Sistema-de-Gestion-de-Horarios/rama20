@@ -4,7 +4,7 @@ import button from "../UI/button";
 import AuthContext from "../store/auth-context";
 import Estudiante from "../../view/Estudiante";
 import { Router } from "react-router";
-
+import Nave from "../Navigation/Nave";
 
 const emailReducer = (state, action) => {
     if (action.type === "USER_INPUT") {

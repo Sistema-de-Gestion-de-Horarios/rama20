@@ -1,19 +1,14 @@
-import React, {useContext, Fragment} from "react";
-import NavBar from "./Componentes/Navigation/Nave";
+import React, {useState, useContext, Fragment} from "react";
+import Nave from "./Componentes/Navigation/Nave";
 import Login from "./Componentes/LOGINADMIN/Login";
-import LoginE from "./Componentes/LOGINEST/LoginE";
-import LoginD from "./Componentes/LOGINDOC/LoginD";
 import authCtx from "./Componentes/store/auth-context";
-
-
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Docente from './view/Docente';
 import Ambiente from "./view/Admin/components/TabAmbientes/Ambiente";
 import Materia from "./view/Admin/components/TabMaterias/Materia";
 import Admin from './view/Admin';
+import Pagina from "./Pagina";
 import Estudiante from "./view/Admin/components/TabEstudiantes/Estudiante";
-import Pagina from './Pagina';
-import { useState } from 'react';
 import TabDocentes from './view/Admin/components/TabDocentes';
 import Listadocente from './view/Admin/components/TabDocentes/Listadocente';
 import TabAmbientes from "./view/Admin/components/TabAmbientes";
@@ -22,7 +17,7 @@ import TabMaterias from "./view/Admin/components/TabMaterias";
 import ListaMateria from "./view/Admin/components/TabMaterias/ListaMateria";
 import TabEstudiantes from "./view/Admin/components/TabEstudiantes";
 import ListaEstudiante from "./view/Admin/components/TabEstudiantes/ListaEstudiante";
-
+import Principal from "./Principal";
 
 function App() {
 	const ctx = useContext(authCtx);
@@ -107,81 +102,20 @@ function App() {
 		setEstudianteIn(true);	
 	};	
 
-
     return (
-
-				///////////////////////////////////////////////////////////////////////
-        <Router>
+		<BrowserRouter>
 			<Switch>
-				{/* <Route exact path="/">
-				{isDocenteIn ? ( 
-			  <Fragment>
-				   <Docente  onNewDocente= {newDocenteHandler}/>
-						<Listadocente docentes={listDocente}/>
-				  
-			  </Fragment> 
-		   ): ( 
-			  <Pagina onDocente = {DocenteHandler}/>
-			 
-		   )}  ;
-				  </Route> */}
-
 				<Route exact path="/">
-				{isAmbienteIn ? ( 
-			    <Fragment>
-				   <Ambiente  onNewAmbiente= {newAmbienteHandler}/>
-						<ListaAmbiente ambientes={listAmbiente}/>
-				  
-			    </Fragment> 
-		        ): ( 
-			    <Pagina onAmbiente = {AmbienteHandler}/>)}  ;
+					<Principal />
 				</Route>
-
-
-				<Route exact path="/">
-				{isMateriaIn ? ( 
-			    <Fragment>
-				   <Materia  onNewMateria= {newMateriaHandler}/>
-						<ListaMateria materias={listMateria}/>
-				  
-			    </Fragment> 
-		        ): ( 
-			    <Pagina onMateria = {MateriaHandler}/>)}  ;
+				<Route path="/Pagina">
+					<Pagina />
 				</Route>
-
-
-
-				  <Route exact path="/">
-					  
-				  </Route>
-				  <Route path="/admin">
-					  <Admin />
-				  </Route>
-				  <Route path="/docente">
-					  <Docente />
-				  </Route>
-				  <Route path="/estudiante">
-					  <Estudiante />
-				  </Route> 
-				  
-
-				  {/* <Route exact path="/">
-					<Pagina />	
-				<Fragment>
-						 <Login  onClick={ctx.onClick}/>
-                	</Fragment>		
-					<Fragment>
-						 <LoginE  onClick={ctx.onClick}/>
-                	</Fragment>	
-					<Fragment>
-						 <LoginD  onClick={ctx.onClick}/>
-                	</Fragment>	
-			</Route> */}
+				<Route path="/login">
+					<Login />
+				</Route>
 			</Switch>
-		</Router>
-			  
+		</BrowserRouter>
      )
  }
-		
-
 export default App;

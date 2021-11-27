@@ -17,10 +17,10 @@ const ListaDocente = (props) => {
                                 <td> {doce.cargaFloat}</td>
                                 <td> 
                                     <i className="el-icon-edit"></i>
-                                    <a href="{#}" onClick={()=>this.doce.id}> {props.children}Editar</a>|
+                                    <a href="/view/Admin/components/TabDocentes/ActualizarDocente" onClick={()=>this.doce.id}> {props.children}Editar</a>
                                     <i className="el-icon-delete"></i> 
-                                    <a href="{#}"onClick={props.onClick}> {props.children}Eliminar</a>|
-                                    <a href="{#}" onClick={props.onClick}> {props.children}VerMateria</a>|
+                                    <a href="{#}"onClick={props.onClick}> {props.children}Eliminar</a>
+                                    <a href="{#}" onClick={props.onClick}> {props.children}VerMateria</a>
 
                                 </td>    
                             

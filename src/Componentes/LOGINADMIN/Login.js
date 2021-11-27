@@ -1,16 +1,14 @@
-import React, {useState, useContext, useReducer, Fragment} from "react";
+import React, {useState, useContext, useReducer} from "react";
 import Card from "../UI/Card";
-import button from "../UI/button";
+import {useHistory} from 'react-router-dom';
 import AuthContext from "../store/auth-context";
-import Admin from "../../view/Admin";
-import { Router } from "react-router";
 
 
 const emailReducer = (state, action) => {
     if (action.type === "USER_INPUT") {
         return {
             value: action.val,
-            isValid: action.val.includes("@gmail"),
+            isValid: true//action.val.includes("@gmail"),
         };
     }
     return {
@@ -20,12 +18,15 @@ const emailReducer = (state, action) => {
 };
 
 const Login = (props) => {
-const ctx = useContext (AuthContext);
-
+    const history = useHistory();
+    const ctx = useContext (AuthContext);
     // const [email, setEmail] = useState(""); 
+    console.log(ctx.authUser);
+    if(ctx.authUser){
+        history.push('/Pagina');
+    }
     const [password, setPassword] = useState("");
-
-   const [email, dispatchEmail] = useReducer (emailReducer, {
+    const [email, dispatchEmail] = useReducer (emailReducer, {
        value: "",
        isValid: null,
    }); 
@@ -39,12 +40,13 @@ const ctx = useContext (AuthContext);
     };
     const passwordChangeHandler = (e) => { 
         // console.log(e. target. value); 
-        setPassword(e. target.value);
+        setPassword(e.target.value);
     };
     const handlerSubmit = (e) => { 
-        e.preventDefault(); 
+        e.preventDefault();
         if (email.isValid) {
-            ctx.onLogin(email, password);
+            ctx.onLogin(email.value, password);
+            history.push('/Pagina')
         }
         else {
             console.log("email no valido");
@@ -54,7 +56,7 @@ const ctx = useContext (AuthContext);
         <Card>
             <form onSubmit ={handlerSubmit}>
                 <label>Email</label>
-                <input type="email" placeholder="ejemplo@gmail.com" onChange={emailChangeHandler} />
+                <input  placeholder="ejemplo@gmail.com" onChange={emailChangeHandler} />
                 <label>Password</label> 
                 <input type="password" onChange={passwordChangeHandler} />
                 <button>Login</button>

@@ -1,18 +1,14 @@
 import React, {useContext} from "react";
 import button from "../UI/button";
 import "./Nave.css";
-import AuthContext from "../store/auth-context";
+import { Link } from "react-router-dom";
 
-const Nave = (props) => {
-    const ctx = useContext(AuthContext);
+const Nave = () => {
     return (
         <nav className="navbar">
-            <section className="links">
-                <button onClick={ctx.onLogout} onLogin={props.onLogin}>
-                    Logout
-                </button>
-            </section>
-            
+                <button>
+                   <Link to="Pagina">Volver</Link>
+                </button>  
         </nav>
     );
 };

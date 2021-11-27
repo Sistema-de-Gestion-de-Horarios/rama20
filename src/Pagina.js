@@ -1,45 +1,32 @@
-import React from 'react';
-import {Menu } from 'element-react';
-import { Layout } from 'element-react';
-import Nave from './Componentes/Navigation/Nave';
-import authCtx from "./Componentes/store/auth-context"; 
-import Login from './Componentes/LOGINADMIN/Login';
+import React, {Fragment, useContext} from 'react';
+import { useHistory } from 'react-router';
+import AuthContext from './Componentes/store/auth-context';
 import Admin from './view/Admin';
-
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-
-} from 'react-router-dom'
+import Docente from './view/Docente';
+import Estudiante from './view/Estudiante';
+// import { Link } from 'react-router-dom';
+// import {Menu } from 'element-react';
+// import { Layout } from 'element-react';
+// import Login from "./Componentes/LOGINADMIN/Login";
+// import Admin from './view/Admin';
+// import { Route } from 'react-router';
 
 function Pagina (props) {
-	const estudianteHandler=(e)=> {
-		props.onLogin();
-		e.preventDefault();
+	// const handlerSubmit =(e) => {
+	// 	props.onLogin();
+	// 	e.preventDefault();
+	// }
+	const history = useHistory();
+	const ctx = useContext(AuthContext);
+	if(!ctx.authUser){
+		history.push('/login');
 	}
-	const handlerSubmit =(e) => {
-		props.onLogin();
-		e.preventDefault();
+	switch(ctx.authUser.role){
+		case 'admin': return <Admin />;
+		case 'docente': return <Docente />;
+		case 'estudiante': return <Estudiante />;
+		default: history.push('/login'); return <div>Vacio</div>;
 	}
-    return (
-		<Router>
-			<Switch>
-			  <Layout.Row className="tac">
-				<Layout.Col span={8}>
-				  <Menu defaultActive="2" className="el-menu-vertical-demo" onsubmit={handlerSubmit}>
-                          <Menu.SubMenu index="1" title={<span><i ></i>🏠 HOME</span>}>
-                                <Menu.Item index="1-1"  onClick={props.onClick}> {props.children} Estudiantes</Menu.Item>
-                                <Menu.Item index="1-2"  onClick={props.onClick}> {props.children} Docentes</Menu.Item>
-                                <Menu.Item index="1-3"  onClick={props.onClick}> {props.children} Administrador</Menu.Item>
-                          </Menu.SubMenu>
-    				 </Menu>
-				</Layout.Col>
-			  </Layout.Row>
-			</Switch>    				  
-	    </Router>  
-		
-     );
  }
 			
 export default Pagina;

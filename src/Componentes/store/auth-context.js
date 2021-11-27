@@ -1,37 +1,32 @@
 import {createContext, useState, useEffect} from "react";
 
-const AuthContext = createContext ({
-    isAdministrativoIn: false,
-    onLogin: (email, password) => {},
-    onLogout: () => {},
-});
+const AuthContext = createContext (null);
 
 export const AuthContextProvider = (props) => {
-    const [isAdministrativoIn, setAdministrativoIn] = useState(false);
-    useEffect(() => {
-    const storagedAdministrativoInfo = localStorage.getItem("isAdministrativoIn");
-	if (storagedAdministrativoInfo === 1){
-		setAdministrativoIn(true);
-	}
-}, []);
-
-const AdministradorHandler = (CI, password) => {
-    // console.log("Admin en---");
-    // localStorage.setItem("isAdministrativon", 1);
-    setAdministrativoIn(true);
-};
+  const [authUser, setAuthUser] = useState(undefined);
+  const loginHandler = (email, password) => {
+    // console.log("pame");
+    // console.log(isAdministrativoIn);
+    // localStorage.removeItem("isAdministrativoIn");
+    
+    let user = {
+      name: email,
+      role: email
+    };
+    setAuthUser(user);
+  };
   const logoutHandler = () => {
     // console.log("pame");
     // console.log(isAdministrativoIn);
     // localStorage.removeItem("isAdministrativoIn");
-    setAdministrativoIn(false);
-};
+    setAuthUser(undefined);
+  };
   return (
        <AuthContext.Provider 
        value={{
-        isAdministrativoIn,
-        onLogin:AdministradorHandler,
-        onLogout: logoutHandler,
+          authUser,
+          onLogin: loginHandler,
+          onLogout: logoutHandler,
        }}
     >
         {props.children}
