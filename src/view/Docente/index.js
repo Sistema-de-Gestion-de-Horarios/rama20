@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function Docente() {
     return (
         <div>
@@ -13,7 +11,7 @@ export default function Docente() {
                 </ul>
                 <li class="button">
                         <button type="submit">Envíe su mensaje</button>
-                    </li>
+                </li>
         
             </section>  
            
