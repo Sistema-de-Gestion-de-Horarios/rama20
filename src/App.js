@@ -1,40 +1,25 @@
-import React, {useState, useContext, Fragment} from "react";
-import Nave from "./Componentes/Navigation/Nave";
+import React, {useState, useContext} from "react";
 import Login from "./Componentes/LOGINADMIN/Login";
 import authCtx from "./Componentes/store/auth-context";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Docente from './view/Docente';
-import Ambiente from "./view/Admin/components/TabAmbientes/Ambiente";
-import Materia from "./view/Admin/components/TabMaterias/Materia";
-import Admin from './view/Admin';
 import Pagina from "./Pagina";
-import Estudiante from "./view/Admin/components/TabEstudiantes/Estudiante";
-import TabDocentes from './view/Admin/components/TabDocentes';
-import Listadocente from './view/Admin/components/TabDocentes/Listadocente';
-import TabAmbientes from "./view/Admin/components/TabAmbientes";
-import ListaAmbiente from "./view/Admin/components/TabAmbientes/ListaAmbiente";
-import TabMaterias from "./view/Admin/components/TabMaterias";
-import ListaMateria from "./view/Admin/components/TabMaterias/ListaMateria";
-import TabEstudiantes from "./view/Admin/components/TabEstudiantes";
-import ListaEstudiante from "./view/Admin/components/TabEstudiantes/ListaEstudiante";
 import Principal from "./Principal";
+import nave from "./Componentes/Navigation/Nave";
 
 function App() {
 	const ctx = useContext(authCtx);
-	const [isDocenteIn, setDocenteIn] = useState(false);
-	const [listDocente, setListDocentes] = useState([]);
+	const [isPersonaIn, setPersonaIn] = useState(false);
+	const [listPersona, setListPersonas] = useState([]);
 	const [isAmbienteIn, setAmbienteIn] = useState(false);
 	const [listAmbiente, setListAmbientes] = useState([]);
 	const [isMateriaIn, setMateriaIn] = useState(false);
 	const [listMateria, setListMaterias] = useState([]);
-	const [isEstudianteIn, setEstudianteIn] = useState(false);
-	const [listEstudiante, setListEstudiantes] = useState([]);
 
-	const newDocenteHandler =(docenteName, cargaFloat) => {
-			setListDocentes((prevListDocentes) => {
+	const newPersonaHandler =(personaName, personaApellido, tipo, cargaFloat) => {
+			setListPersonas((prevListPersonas) => {
 			  return [
-				  ...prevListDocentes, 
-				  {id: Math.trunc(Math.orden() * 100), docenteName, cargaFloat} 
+				  ...prevListPersonas, 
+				  {id: Math.trunc(Math.orden() * 100), personaName, personaApellido, tipo, cargaFloat} 
 			  ];
 			});
 	};
@@ -54,22 +39,16 @@ function App() {
 		  ];
 		});
     };
-	const newEstudianteHandler =(estudianteName, ru) => {
-		setListEstudiantes((prevListEstudiantes) => {
-		  return [
-			  ...prevListEstudiantes, 
-			  {id: Math.trunc(Math.orden() * 100), estudianteName, ru} 
-		  ];
-		});
-    };
-	const storagedDocenteInfo = localStorage.getItem("isDocenteIn");
-	if (storagedDocenteInfo === 1){
-		setDocenteIn(true);
+	
+
+	const storagedPersonaInfo = localStorage.getItem("isPersonaIn");
+	if (storagedPersonaInfo === 1){
+		setPersonaIn(true);
 	}
-	const DocenteHandler = () => {
-		console.log("Docente en---");
-		localStorage.setItem("isDocenteIn", 1);
-		setDocenteIn(true);	
+	const PersonaHandler = () => {
+		console.log("Persona en---");
+		localStorage.setItem("isPersonaIn", 1);
+		setPersonaIn(true);	
 	};	
 
 	const storagedAmbienteInfo = localStorage.getItem("isAmbienteIn");
@@ -91,16 +70,7 @@ function App() {
 		localStorage.setItem("isMateriaIn", 1);
 		setMateriaIn(true);	
 	};	
-
-	const storagedEstudianteInfo = localStorage.getItem("isEstudianteIn");
-	if (storagedEstudianteInfo === 1){
-		setEstudianteIn(true);
-	}
-	const EstudianteHandler = () => {
-		console.log("Estudiante en---");
-		localStorage.setItem("isEstudianteIn", 1);
-		setEstudianteIn(true);	
-	};	
+	
 
     return (
 		<BrowserRouter>

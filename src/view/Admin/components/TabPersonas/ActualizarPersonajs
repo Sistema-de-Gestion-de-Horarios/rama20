@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import Docente from './Docente';
-export const ActualizarDocente = () => {
+import Persona from './Persona';
+export const ActualizarPersona = () => {
    
-   const [listDocente, setListDocentes] = useState([]);
+   const [listPersona, setListPersonas] = useState([]);
    const [isUpdateIn, setIsUpdateIn] = useState(false); 
 
-   const newDocenteHandler =(docenteName, cargaFloat) => {
-       setListDocentes((prevListDocentes) => {
+   const newPersonaHandler =(docenteName, cargaFloat) => {
+       setListPersonas((prevListPersonas) => {
         return [
-           ...prevListDocentes, 
+           ...prevListPersonas, 
            {id: Math.trunc(this.docenteName,this. cargaFloat)} 
         ];
       });
@@ -18,7 +18,7 @@ export const ActualizarDocente = () => {
       setIsUpdateIn(true);
    }
 
-   const DocenteHandler = (email, password) => {
+   const PersonaHandler = (email, password) => {
       console.log("Loging in...")
       localStorage.GetItem("isUpdateIn", 1);
       setIsLoggedIn(true);

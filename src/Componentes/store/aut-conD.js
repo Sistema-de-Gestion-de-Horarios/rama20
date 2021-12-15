@@ -22,8 +22,7 @@ export const AuthContextProvider = (props) => {
     };
 
   const logoutHandler = () => {
-    // console.log("pame");
-    // console.log(isDocenteIn);
+    
     localStorage.removeItem("isDocenteIn");
     setisDocenteIn(false);
 };

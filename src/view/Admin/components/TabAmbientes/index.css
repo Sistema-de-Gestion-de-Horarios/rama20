@@ -2,10 +2,9 @@ table {
     border-collapse: collapse;
     padding: 20px 10px;
   }
-  th,
-  tr,
+  
   td {
-    border: 1px solid rgb(111, 119, 240);
+    border: 1px solid rgb(190, 240, 111);
     width: 300px;
     height: 45px;
     vertical-align: middle;
@@ -16,6 +15,3 @@ table {
     background-color: #2270e6;
   }
   
-  tr:nth-child(odd) td {
-    background-color: #eee;
-  }

@@ -1,7 +1,16 @@
+
+import { Tabs } from 'element-react'
+import React from 'react'
+
+import 'element-theme-default';
 export default function Docente() {
     return (
         <div>
-            <h1>Horario Asignado</h1>  
+            <h1>Horario Asignado</h1>
+            <Tabs activeName="1" onTabClick={ (tab) => console.log(tab.props.name) }>
+                    <Tabs.Pane label="programacion" name="1">materias-programadas</Tabs.Pane>
+                    <Tabs.Pane label="horarios" name="2">ambientes designados</Tabs.Pane> 
+            </Tabs>  
             <section>
            
                 <ul>
@@ -18,4 +27,6 @@ export default function Docente() {
         </div>
     )
 }
+
+
 

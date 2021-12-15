@@ -5,11 +5,11 @@ body{
     background-attachment: fixed;
 }
 .navbar {
-    background: rgba(66, 241, 233, 0.288);
+    background: rgba(17, 32, 235, 0.938);
     border-bottom: 1px solid black
 }
 h1 {
-    background: rgba(0, 195, 255, 0.692);
+    background: rgba(245, 7, 39, 0.938);
     font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
     color:black;
 }

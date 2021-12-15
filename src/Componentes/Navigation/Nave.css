@@ -5,11 +5,11 @@
     align-items: center;
     max-width: 600px; 
     margin: 0 auto;
-    border-bottom: 1px solid #c2c2c4;
+    border-bottom: 1px solid #0d0de2;
 }
 h1 {
     
-    color: #008020;
+    color: white;
 }
 .links {
     
@@ -21,9 +21,5 @@ a {
     margin-left: 16px; 
     text-decoration: none; 
     padding: 6px;
-}S
-a:hover {
-    
-    color: #7273a1;
-}    
+} 
     

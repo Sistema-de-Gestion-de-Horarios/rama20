@@ -1,35 +1,37 @@
 import React from "react"; 
 import "./index.css";
 
-const ListaMateria = (props) => {
-     const {materias, onDelete} = props;
+
+const ListaPersona = (props) => {
+     const {personas, onDelete} = props;
     return (
         <div>
              <table>
                         <thead>
                            <tr>
-                              <th>N°</th>
-                              <th>Nombre</th>
-                              <th>Sigla</th>
-                              <th>Semestre</th>
-                              <th>Grupo</th>
-			               <th> Operaciones </th>
-		                 </tr>
+                               <th>N°</th>
+                               <th>Nombres</th>
+			                   <th>Apellidos</th>
+                               <th>Tipo</th>
+                               <th>Carga Horaria</th>
+			                   <th> Operaciones </th>
+			        
+		                    </tr>
                         </thead>
                         <tbody>
-                         {materias.map((materia) => {
+                         {personas.map((persona) => {
                               return( 
-                                   <tr key={materia.id}>
-                                        <td> {materia._id} </td>
-                                        <td> {materia.nombre}</td>
-                                        <td> {materia.sigla}</td>
-                                        <td> {materia.semestre}</td>
-                                        <td> {materia.grupo}</td>
+                                   <tr key={persona.id}>
+                                        <td> {persona._id} </td>
+                                        <td> {persona.nombres}</td>
+                                        <td> {persona.apellidos}</td>
+                                        <td> {persona.tipo}</td>
+                                        <td> {persona.cargahoraria}</td>
                                         <td> 
                                              {/* <i className="el-icon-edit"></i>
                                              <a href="/view/Admin/components/TabPersonas/ActualizarPersona" onClick={()=>this._id}> {props.children}Editar</a>
                                              */}
-                                             <a onClick={()=>{onDelete(materia)}}><i className="el-icon-delete" ></i> Eliminar</a>
+                                             <a onClick={()=>{onDelete(persona)}}><i className="el-icon-delete" ></i> Eliminar</a>
                                              {/* <a href="{#}" onClick={props.onClick}> {props.children}VerPersona</a> */}
 
                                         </td>    
@@ -44,4 +46,4 @@ const ListaMateria = (props) => {
         </div>
      );
 }
-export default ListaMateria;
+export default ListaPersona;
